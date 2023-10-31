@@ -47,3 +47,8 @@
 
     Relationship --> City has many airports and Airport belongs to a
     city (One to many)
+
+    Command to generate airport model -
+    ```
+     npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer
+    ```
