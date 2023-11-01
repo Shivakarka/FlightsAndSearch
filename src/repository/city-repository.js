@@ -2,8 +2,13 @@ const { Op } = require("sequelize");
 const { City } = require("../models/index");
 
 class CityRepository {
-  async createCity({ name }) {
+  async createCity(data) {
     try {
+      if (Array.isArray(data)) {
+        const cities = await City.bulkCreate(data);
+        return cities;
+      }
+      const { name } = data;
       const city = await City.create({ name });
       return city;
     } catch (error) {
